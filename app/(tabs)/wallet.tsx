@@ -23,6 +23,16 @@ const wallet = () => {
         }
     }, [user]);
 
+
+    const turnWalletToArray = (user: any) => {
+        const walletArray = Object.entries(user?.wallets).map(([key,value]: [string, any])=>{
+                return {"id": key, ...value}
+        })
+        return walletArray;
+    }
+
+
+
     return (
         <SafeAreaView
             className="bg-black flex-1"
@@ -63,7 +73,7 @@ const wallet = () => {
                 </View>
                 { user?.wallets && (
                     <FlatList
-                        data={user.wallets}
+                        data={turnWalletToArray(user)}
                         scrollEnabled={false}
                         renderItem={({ item }) => (
                             <TouchableOpacity

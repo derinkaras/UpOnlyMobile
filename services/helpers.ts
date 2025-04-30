@@ -35,10 +35,11 @@ export const pickImage = async (setImageUri: any) => {
 
 export const getTotalBalanceFromLocalDB = async (user: any) => {
     // The user is assumed to have been updated with new wallet stuff using the authcontexts update
-    const wallets = user?.wallets || []
+    const wallets = user?.wallets || {}
     let totalBalance = 0;
-    for (const wallet of wallets) {
-        totalBalance += Number(wallet.walletBalance)
+    for (const [key, value] of Object.entries(wallets)) {
+        // @ts-ignore
+        totalBalance += Number(value.walletBalance)
     }
     return totalBalance.toFixed(2);
 }
