@@ -1,7 +1,7 @@
 // Updated AuthProvider with validation and using react-native-toast-message
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { auth, firestore } from "@/config/firebase";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "@firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, getDoc, setDoc } from "@firebase/firestore";
 import Toast from 'react-native-toast-message';
 import { EmailAuthProvider, reauthenticateWithCredential, updateEmail } from "firebase/auth";
