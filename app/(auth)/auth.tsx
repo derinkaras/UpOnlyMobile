@@ -9,7 +9,7 @@ import BackButton from "@/Components/BackButton";
 import CustomTextInput from "@/Components/CustomTextInput";
 
 
-const auth = () => {
+const Auth = () => {
     const router = useRouter();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -34,6 +34,7 @@ const auth = () => {
     useEffect(() => {
         if (user) {
             router.replace("/(tabs)")
+
         }
     },[user])
 
@@ -80,4 +81,4 @@ const auth = () => {
   );
 };
 
-export default auth;
+export default Auth;
