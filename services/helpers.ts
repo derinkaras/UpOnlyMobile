@@ -2,6 +2,7 @@ import * as ImagePicker from "expo-image-picker";
 import Toast from "react-native-toast-message";
 import {doc, getDoc} from "@firebase/firestore";
 import {firestore} from "@/config/firebase";
+import {expenseCategories, incomeCategories} from "@/constants/transactionTypes";
 
 export const pickImage = async (setImageUri: any) => {
     // Request permissions
@@ -42,4 +43,45 @@ export const getTotalBalanceFromLocalDB = async (user: any) => {
         totalBalance += Number(value.walletBalance)
     }
     return totalBalance.toFixed(2);
+}
+
+
+export const getWalletsArray = (user: any) => {
+    const wallets = user?.wallets || {}
+    const walletsArray = Object.entries(wallets).map(([key, value]: any) => {
+            return {id: key, ...value};
+    })
+    return walletsArray;
+}
+
+
+export const getWalletsOptions = (user: any) => {
+    const wallets = user?.wallets;
+    const walletsArray = Object.entries(wallets).map(([key, value]: any) => {
+        return {"label": value.walletName, "value": value.walletName};
+    })
+    return walletsArray;
+}
+
+
+export const getCategoriesOptions = (type: string) => {
+    let categories;
+    if (type === "Expense") {
+        categories = Object.entries(expenseCategories).map(([key, value]: any) => {
+            return {"label": value.label, "value": value.label};
+        })
+    } else {
+        categories = Object.entries(incomeCategories).map(([key, value]: any) => {
+            return {"label": value.label, "value": value.label};
+        })
+    }
+    return categories;
+}
+
+export const getTransactionsArray = (user: any) => {
+    const transactions = user?.transactions || {}
+    const transactionsArray = Object.entries(transactions).map(([key, value]: any) => {
+        return {id: key, ...value};
+    })
+    return transactionsArray;
 }

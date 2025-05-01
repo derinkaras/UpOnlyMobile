@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity, Image, TextInput} from 'react-native';
-import {icons} from "@/Constants/icons";
+import {icons} from "@/constants/icons";
 import {useRouter} from "expo-router";
 import avatar from "@/assets/images/defaultAvatar.png";
 import user from "@/assets/icons/user.png";

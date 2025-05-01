@@ -53,6 +53,51 @@ export const deleteWalletFromDB = async (walletItemToDelete: any, userId: string
     });
 }
 
+interface transactionType {
+    type: string,
+    wallet: string,
+    category:string,
+    amount: string,
+    date:string,
+    description?:string
+    user: any
+}
+
+export const addTransactionToDB = async (transactionDict: transactionType, transactionToUpdate: any)  => {
+    const uniqueKey = new Date().toISOString()
+    const safeKey = uniqueKey.replace(/\./g, "_"); // Adjust for this later
+    const docRef = doc(firestore, "users", transactionDict.user.uid)
+    delete transactionDict["user"]
+    const userDoc = await getDoc(docRef)
+    if (userDoc.exists()) {
+        if (transactionToUpdate) {
+            await updateDoc(docRef, {
+                [`transactions.${transactionToUpdate.id}`]: {
+                    ...transactionDict,
+                }
+            });
+        } else {
+            await updateDoc(docRef, {
+                [`transactions.${safeKey}`]: {
+                    ...transactionDict,
+                }
+            });
+        }
+    } else {
+        await setDoc(docRef, {
+            ["transactions"]: {
+                [uniqueKey]: {...transactionDict}
+            },
+        })
+    }
+}
+
+export const deleteTransactionFromDB = async (transactionId: string, user: any)  => {
+    const docRef = doc(firestore, "users", user.uid)
+    await updateDoc(docRef, {
+        [`transactions.${transactionId}`]: deleteField()
+    })
+}
 
 
 

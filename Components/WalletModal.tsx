@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Modal, TextInput, TouchableOpacity, Image} from 'react-native';
 import BackButton from "@/Components/BackButton";
-import {icons} from "@/Constants/icons";
+import {icons} from "@/constants/icons";
 import {pickImage} from "@/services/helpers";
 import {addWalletToDB, deleteWalletFromDB} from "@/services/firebase";
 import {useAuth} from "@/contexts/AuthContext";

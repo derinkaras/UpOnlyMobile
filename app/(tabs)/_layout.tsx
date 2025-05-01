@@ -1,7 +1,7 @@
 import React from 'react';
 import {Tabs} from "expo-router";
 import {Image, Pressable} from "react-native";
-import {icons} from "@/Constants/icons";
+import {icons} from "@/constants/icons";
 import * as Haptics from 'expo-haptics';
 
 

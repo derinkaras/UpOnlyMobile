@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, SafeAreaView, Image, TouchableOpacity, ScrollView, FlatList} from 'react-native';
 import {exampleUserData} from "@/services/exampleUserData";
-import {icons} from "@/Constants/icons";
+import {icons} from "@/constants/icons";
 import WalletModal from "@/Components/WalletModal";
 import {useAuth} from "@/contexts/AuthContext";
-import {getTotalBalanceFromLocalDB} from "@/services/helpers";
+import {getTotalBalanceFromLocalDB, getWalletsArray} from "@/services/helpers";
 
 const wallet = () => {
     const [showModal, setShowModal] = useState(false);
@@ -22,15 +22,6 @@ const wallet = () => {
             updateTotalBalance();
         }
     }, [user]);
-
-
-    const turnWalletToArray = (user: any) => {
-        const walletArray = Object.entries(user?.wallets).map(([key,value]: [string, any])=>{
-                return {"id": key, ...value}
-        })
-        return walletArray;
-    }
-
 
 
     return (
@@ -73,7 +64,7 @@ const wallet = () => {
                 </View>
                 { user?.wallets && (
                     <FlatList
-                        data={turnWalletToArray(user)}
+                        data={getWalletsArray(user)}
                         scrollEnabled={false}
                         renderItem={({ item }) => (
                             <TouchableOpacity

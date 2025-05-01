@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity, Image} from 'react-native';
-import {images} from "@/Constants/images";
+import {images} from "@/constants/images";
 import {router, useRouter} from "expo-router";
 import {useAuth} from "@/contexts/AuthContext";
 

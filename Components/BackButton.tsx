@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {icons} from "@/Constants/icons";
+import {icons} from "@/constants/icons";
 import {router, useRouter} from "expo-router";
 
 interface props {

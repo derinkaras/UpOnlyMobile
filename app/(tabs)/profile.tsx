@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, SafeAreaView, Image, TouchableOpacity, FlatList, ImageBackground} from 'react-native';
-import {images} from "@/Constants/images";
+import {images} from "@/constants/images";
 import * as ImagePicker from "expo-image-picker";
 import Toast from "react-native-toast-message";
 import {useAuth} from "@/contexts/AuthContext";
 import {addProfilePictureToDB} from "@/services/firebase";
-import {icons} from "@/Constants/icons";
+import {icons} from "@/constants/icons";
 import * as Haptics from "expo-haptics"
 import ProfileModal from "@/Components/ProfileModal";
 import {pickImage} from "@/services/helpers";

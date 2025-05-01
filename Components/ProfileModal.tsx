@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {View, Text, Modal, SafeAreaView, TouchableOpacity, Image} from 'react-native';
-import {icons} from "@/Constants/icons";
+import {icons} from "@/constants/icons";
 import {useAuth} from "@/contexts/AuthContext";
 import {useRouter} from "expo-router";
-import {images} from "@/Constants/images";
+import {images} from "@/constants/images";
 import * as ImagePicker from "expo-image-picker";
 import Toast from "react-native-toast-message";
 import {pickImage} from "@/services/helpers";
